@@ -1,57 +1,47 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <!-- Version du modèle de projet Maven -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Méta-informations sur le projet -->
-    <groupId>fr.univavignon.pokedex</groupId>   <!-- Identifiant unique pour votre projet -->
-    <artifactId>pokedex</artifactId>   <!-- Nom du projet -->
-    <version>1.0.0</version>   <!-- Version de votre projet -->
+    <groupId>fr.univavignon.pokedex</groupId>
+    <artifactId>pokedex</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>Pokedex Project</name>
     <description>Projet de pokedex</description>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>   <!-- Version source de Java -->
-        <maven.compiler.target>1.8</maven.compiler.target>   <!-- Version cible de Java -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Encodage du projet -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Cycles de vie et gestion du build -->
     <build>
         <plugins>
-            <!-- Plugin Maven Compiler pour spécifier la version de Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
                     <source>1.8</source>
-                    <target>1.8</target>   <!-- Version cible de Java -->
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 
-            <!-- Plugin pour les tests unitaires avec Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>   <!-- Version de Surefire -->
-                <configuration>
-                    <!-- Configuration des tests -->
-                </configuration>
+                <version>3.1.2</version>
             </plugin>
         </plugins>
     </build>
 
-    <!-- Liste des dépendances pour le projet -->
     <dependencies>
-        <!-- Dépendance pour JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.9.0</version>
-            <scope>test</scope>   <!-- Indique que cette dépendance est uniquement pour les tests -->
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -61,7 +51,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Dépendance pour Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -70,7 +59,6 @@
         </dependency>
     </dependencies>
 
-    <!-- Répertoire de gestion des versions (optionnel, si nécessaire) -->
     <repositories>
         <repository>
             <id>central</id>
