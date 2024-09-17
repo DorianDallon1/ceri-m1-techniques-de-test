@@ -3,15 +3,15 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk  # Utilisez Java 8 ou plus si nécessaire, par exemple openjdk:11
+      - image: circleci/openjdk:8-jdk
     steps:
-      - checkout  # Récupérer le code source
+      - checkout
       - run:
           name: Install Maven dependencies
-          command: mvn install -DskipTests=true  # Installation des dépendances Maven sans exécuter les tests
+          command: mvn install -DskipTests=true
       - run:
           name: Run unit tests
-          command: mvn test  # Exécution des tests unitaires Maven
+          command: mvn test
 
 workflows:
   version: 2
@@ -20,4 +20,4 @@ workflows:
       - build:
           filters:
             branches:
-              only: master  # Exécution seulement sur la branche master
+              only: master
