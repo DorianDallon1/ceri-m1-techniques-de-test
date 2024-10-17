@@ -1,11 +1,11 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import org.junit.Before;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class IPokemonTrainerFactoryTest {
@@ -18,9 +18,9 @@ public class IPokemonTrainerFactoryTest {
 
     private PokemonTrainer ash;
 
-    @BeforeEach
+    @Before
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         ash = new PokemonTrainer("Ash", Team.MYSTIC, mock(IPokedex.class));
     }
 

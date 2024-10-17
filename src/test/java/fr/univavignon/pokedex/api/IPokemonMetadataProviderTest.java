@@ -1,11 +1,11 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import org.junit.Before;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class IPokemonMetadataProviderTest {
@@ -16,9 +16,9 @@ public class IPokemonMetadataProviderTest {
     private PokemonMetadata bulbasaurMetadata;
     private PokemonMetadata aqualiMetadata;
 
-    @BeforeEach
+    @Before
     public void setUp(){
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         bulbasaurMetadata = new PokemonMetadata(0, "Bulbasaur", 126,126, 90);
         aqualiMetadata = new PokemonMetadata(133, "Aquali", 186, 168, 260);
     }
