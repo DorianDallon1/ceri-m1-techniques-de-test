@@ -1,11 +1,11 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class IPokemonMetadataProviderTest {
@@ -15,9 +15,9 @@ public class IPokemonMetadataProviderTest {
 
     private PokemonMetadata bulbasaurMetadata;
 
-    @Before
+    @BeforeEach
     public void setUp(){
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         bulbasaurMetadata = new PokemonMetadata(0, "Bulbasaur", 126,126, 90);
     }
 
@@ -35,9 +35,13 @@ public class IPokemonMetadataProviderTest {
         verify(pokemonMetadataProvider).getPokemonMetadata(0);
     }
 
-    @Test(expected = PokedexException.class)
-    public void testGetPokemonMetaDataThrowsException() throws PokedexException {
+    @Test
+    public void testGetPokemonMetaDataThrowsException() throws PokedexException{
         when(pokemonMetadataProvider.getPokemonMetadata(999)).thenThrow(new PokedexException("invalid index"));
-        pokemonMetadataProvider.getPokemonMetadata(999);
+        PokedexException exception = assertThrows(PokedexException.class, () -> {
+                pokemonMetadataProvider.getPokemonMetadata(999);
+        });
+
+        assertEquals("invalid index", exception.getMessage());
     }
 }

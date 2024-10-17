@@ -1,7 +1,7 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -19,9 +19,9 @@ public class IPokedexTest {
     private Pokemon bulbasaur;
     private Pokemon aquali;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         bulbasaur = new Pokemon(0, "Bulbasaur", 126, 126, 90, 613, 64, 4000, 3, 56.0);
         aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100.0);
     }
@@ -45,10 +45,13 @@ public class IPokedexTest {
         verify(pokedex).getPokemon(0);
     }
 
-    @Test(expected = PokedexException.class)
+    @Test
     public void testGetPokemonThrowsException() throws PokedexException {
         when(pokedex.getPokemon(999)).thenThrow(new PokedexException("invalid index"));
-        pokedex.getPokemon(999);
+        PokedexException exception = assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(999);
+        });
+        assertEquals("invalid index", exception.getMessage());
     }
 
     @Test
