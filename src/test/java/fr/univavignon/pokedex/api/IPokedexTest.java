@@ -29,20 +29,19 @@ public class IPokedexTest {
     @Test
     public void testAddPokemon() {
         when(pokedex.addPokemon(bulbasaur)).thenReturn(0);
+        when(pokedex.addPokemon(aquali)).thenReturn(1);
 
-        int index = pokedex.addPokemon(bulbasaur);
-        assertEquals(0, index);
-
-        verify(pokedex).addPokemon(bulbasaur);
+        assertEquals(0, pokedex.addPokemon(bulbasaur));
+        assertEquals(1, pokedex.addPokemon(aquali));
     }
 
     @Test
     public void testGetPokemon() throws PokedexException {
         when(pokedex.getPokemon(0)).thenReturn(bulbasaur);
-        Pokemon result = pokedex.getPokemon(0);
-        assertEquals("Bulbasaur", result.getName());
+        when(pokedex.getPokemon(133)).thenReturn(aquali);
 
-        verify(pokedex).getPokemon(0);
+        assertEquals(bulbasaur, pokedex.getPokemon(0));
+        assertEquals(aquali, pokedex.getPokemon(133));
     }
 
     @Test
@@ -59,10 +58,9 @@ public class IPokedexTest {
         List<Pokemon> pokemons = Arrays.asList(bulbasaur, aquali);
         when(pokedex.getPokemons()).thenReturn(Collections.unmodifiableList(pokemons));
 
-        List<Pokemon> result = pokedex.getPokemons();
-        assertEquals(2, result.size());
-        assertEquals("Bulbasaur", result.get(0).getName());
-
-        verify(pokedex).getPokemons();
+        assertEquals(pokemons, pokedex.getPokemons());
+        assertEquals(2, pokedex.getPokemons().size());
+        assertEquals("Bulbasaur", pokedex.getPokemons().get(0).getName());
+        assertEquals("Aquali", pokedex.getPokemons().get(1).getName());
     }
 }

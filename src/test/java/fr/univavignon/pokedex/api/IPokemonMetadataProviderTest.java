@@ -14,25 +14,22 @@ public class IPokemonMetadataProviderTest {
     private IPokemonMetadataProvider pokemonMetadataProvider;
 
     private PokemonMetadata bulbasaurMetadata;
+    private PokemonMetadata aqualiMetadata;
 
     @BeforeEach
     public void setUp(){
         MockitoAnnotations.openMocks(this);
         bulbasaurMetadata = new PokemonMetadata(0, "Bulbasaur", 126,126, 90);
+        aqualiMetadata = new PokemonMetadata(133, "Aquali", 186, 168, 260);
     }
 
     @Test
     public void testGetPokemonMetadata() throws PokedexException {
         when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(bulbasaurMetadata);
+        when(pokemonMetadataProvider.getPokemonMetadata(133)).thenReturn(aqualiMetadata);
 
-        PokemonMetadata result = pokemonMetadataProvider.getPokemonMetadata(0);
-        assertNotNull(result);
-        assertEquals("Bulbasaur", result.getName());
-        assertEquals(126, result.getAttack());
-        assertEquals(126, result.getDefense());
-        assertEquals(90, result.getStamina());
-
-        verify(pokemonMetadataProvider).getPokemonMetadata(0);
+        assertEquals(bulbasaurMetadata, pokemonMetadataProvider.getPokemonMetadata(0));
+        assertEquals(aqualiMetadata, pokemonMetadataProvider.getPokemonMetadata(133));
     }
 
     @Test

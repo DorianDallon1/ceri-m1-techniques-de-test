@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class IPokedexFactoryTest {
@@ -27,9 +27,6 @@ public class IPokedexFactoryTest {
     public void testCreatePokedex() {
         when(pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory)).thenReturn(pokedex);
 
-        IPokedex result = pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
-        assertNotNull(result);
-
-        verify(pokedexFactory).createPokedex(pokemonMetadataProvider, pokemonFactory);
+        assertEquals(pokedex, pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory));
     }
 }
