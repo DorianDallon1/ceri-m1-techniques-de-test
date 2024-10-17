@@ -16,18 +16,18 @@ public class IPokemonTrainerFactoryTest {
     @Mock
     private IPokedexFactory pokedexFactory;
 
-    private PokemonTrainer ash;
+    private PokemonTrainer pierre;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        ash = new PokemonTrainer("Ash", Team.MYSTIC, mock(IPokedex.class));
+        pierre = new PokemonTrainer("Pierre", Team.MYSTIC, mock(IPokedex.class));
     }
 
     @Test
     public void testCreateTrainer() {
-        when(trainerFactory.createTrainer("Ash", Team.MYSTIC, pokedexFactory)).thenReturn(ash);
+        when(trainerFactory.createTrainer("Pierre", Team.MYSTIC, pokedexFactory)).thenReturn(pierre);
 
-        assertEquals(ash, trainerFactory.createTrainer("Ash", Team.MYSTIC, pokedexFactory));
+        assertEquals(pierre, trainerFactory.createTrainer("Pierre", Team.MYSTIC, pokedexFactory));
     }
 }
