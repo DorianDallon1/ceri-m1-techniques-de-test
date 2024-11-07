@@ -27,7 +27,30 @@ public class IPokemonFactoryTest {
         when(pokemonFactory.createPokemon(0, 613, 64, 4000, 3)).thenReturn(bulbasaur);
         when(pokemonFactory.createPokemon(133, 2729, 202, 5000, 4)).thenReturn(aquali);
 
-        assertEquals(bulbasaur, pokemonFactory.createPokemon(0, 613, 64, 4000, 3));
-        assertEquals(aquali, pokemonFactory.createPokemon(133, 2729, 202, 5000, 4));
+        // Vérification pour Bulbasaur
+        Pokemon createdBulbasaur = pokemonFactory.createPokemon(0, 613, 64, 4000, 3);
+        assertEquals("Bulbasaur", createdBulbasaur.getName());
+        assertEquals(0, createdBulbasaur.getIndex());
+        assertEquals(126, createdBulbasaur.getAttack());
+        assertEquals(126, createdBulbasaur.getDefense());
+        assertEquals(90, createdBulbasaur.getStamina());
+        assertEquals(613, createdBulbasaur.getCp());
+        assertEquals(64, createdBulbasaur.getHp());
+        assertEquals(4000, createdBulbasaur.getDust());
+        assertEquals(3, createdBulbasaur.getCandy());
+        assertEquals(56.0, createdBulbasaur.getIv(), 0.001);
+
+        // Vérification pour Aquali
+        Pokemon createdAquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
+        assertEquals("Aquali", createdAquali.getName());
+        assertEquals(133, createdAquali.getIndex());
+        assertEquals(186, createdAquali.getAttack());
+        assertEquals(168, createdAquali.getDefense());
+        assertEquals(260, createdAquali.getStamina());
+        assertEquals(2729, createdAquali.getCp());
+        assertEquals(202, createdAquali.getHp());
+        assertEquals(5000, createdAquali.getDust());
+        assertEquals(4, createdAquali.getCandy());
+        assertEquals(100.0, createdAquali.getIv(), 0.001);
     }
 }
