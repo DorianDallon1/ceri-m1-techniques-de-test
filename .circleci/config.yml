@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-        name: test
+        name: Run Test
         command: mvn clean test
       - run:
           name: Générer le rapport coco
