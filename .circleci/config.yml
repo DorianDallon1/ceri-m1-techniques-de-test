@@ -5,9 +5,7 @@ jobs:
       - image: circleci/openjdk:11-jdk
     steps:
       - checkout
-      - run:
-        name: Run Test
-        command: mvn clean test
+      - run: mvn clean test
       - run:
           name: Générer le rapport coco
           command: mvn jacoco:report
