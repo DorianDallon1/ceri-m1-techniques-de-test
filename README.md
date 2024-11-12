@@ -8,8 +8,8 @@ M1 Alternant ILSEN
 
 ## Badges
 
-![CircleCI](https://app.circleci.com/pipelines/github/DorianDallon1/ceri-m1-techniques-de-test)  
-![Coverage Badge](https://app.codecov.io/github/DorianDallon1/ceri-m1-techniques-de-test)
+![CircleCI](https://circleci.com/gh/DorianDallon1/ceri-m1-techniques-de-test.svg?style=shield)  
+[![codecov](https://codecov.io/gh/DorianDallon1/ceri-m1-techniques-de-test/branch/main/graph/badge.svg)](https://codecov.io/gh/DorianDallon1/ceri-m1-techniques-de-test)
 
 ## Introduction
 
