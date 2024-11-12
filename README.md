@@ -1,5 +1,16 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+## Nom et Prénom
+Dallon Dorian
+
+## Groupe
+M1 Alternant ILSEN
+
+## Badges
+
+![CircleCI](https://app.circleci.com/pipelines/github/DorianDallon1/ceri-m1-techniques-de-test)  
+![Coverage Badge](https://app.codecov.io/github/DorianDallon1/ceri-m1-techniques-de-test)
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
