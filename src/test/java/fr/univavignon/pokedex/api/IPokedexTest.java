@@ -5,10 +5,7 @@ import org.junit.Before;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -95,6 +92,30 @@ public class IPokedexTest {
         } catch (PokedexException e) {
             fail("Aucune exception ne doit être lancée pour un index valide.");
         }
+    }
+
+    @Test
+    public void testGetPokemonsWithCustomOrder() {
+        pokedex.addPokemon(aquali);
+        pokedex.addPokemon(bulbasaur);
+
+        // Comparateur personnalisé pour trier les Pokémon par leur CP de manière décroissante
+        List<Pokemon> sortedPokemons = pokedex.getPokemons(Comparator.comparingInt(Pokemon::getCp).reversed());
+
+        // Vérifiez que la liste est triée par CP décroissant
+        assertEquals(Arrays.asList(aquali, bulbasaur), sortedPokemons);
+    }
+
+    @Test
+    public void testGetPokemonsWithDefaultOrder() {
+        pokedex.addPokemon(aquali);
+        pokedex.addPokemon(bulbasaur);
+
+        // Appel sans comparateur pour vérifier l'ordre d'insertion
+        List<Pokemon> defaultOrderPokemons = pokedex.getPokemons(null);
+
+        // Vérifie que la liste suit l'ordre d'insertion (aquali ajouté avant bulbasaur)
+        assertEquals(Arrays.asList(aquali, bulbasaur), defaultOrderPokemons);
     }
 
     @Test(expected = PokedexException.class)
