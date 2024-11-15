@@ -9,24 +9,21 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class IPokedexFactoryTest {
-    @Mock
     private IPokedexFactory pokedexFactory;
-    @Mock
     private IPokemonMetadataProvider pokemonMetadataProvider;
-    @Mock
     private IPokemonFactory pokemonFactory;
-    @Mock
-    private IPokedex pokedex;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        pokedexFactory = new PokedexFactory();
+        pokemonMetadataProvider = new PokemonMetadataProvider();
+        pokemonFactory = new PokemonFactory();
     }
 
     @Test
     public void testCreatePokedex() {
-        when(pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory)).thenReturn(pokedex);
-
-        assertEquals(pokedex, pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory));
+        IPokedex pokedex = pokedexFactory.createPokedex(pokemonMetadataProvider, pokemonFactory);
+        assertNotNull(pokedex);
+        assertTrue(pokedex instanceof Pokedex);
     }
 }
