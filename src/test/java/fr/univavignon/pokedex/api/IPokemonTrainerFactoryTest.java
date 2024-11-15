@@ -52,4 +52,9 @@ public class IPokemonTrainerFactoryTest {
     public void testCreateTrainerNullPokedexFactory() {
         trainerFactory.createTrainer("Jessie", Team.VALOR, null);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreateTrainerEmptyName() {
+        trainerFactory.createTrainer("", Team.VALOR, pokedexFactory);
+    }
 }

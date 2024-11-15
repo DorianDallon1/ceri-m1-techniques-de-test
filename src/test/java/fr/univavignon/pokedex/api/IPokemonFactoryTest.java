@@ -45,4 +45,10 @@ public class IPokemonFactoryTest {
         assertEquals(4, createdAquali.getCandy());
         assertTrue(createdAquali.getIv() >= 0 && createdAquali.getIv() <= 100);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreatePokemonWithInvalidIndex() {
+        // Utilisation d'un index qui lève une PokedexException (ex. un index invalide)
+        pokemonFactory.createPokemon(999, 500, 50, 3000, 2);
+    }
 }
