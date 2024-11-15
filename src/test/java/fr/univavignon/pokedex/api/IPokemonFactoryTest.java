@@ -19,20 +19,18 @@ public class IPokemonFactoryTest {
     @Test
     public void testCreatePokemon() {
 
-        // Vérification pour Bulbasaur
         Pokemon createdBulbasaur = pokemonFactory.createPokemon(0, 613, 64, 4000, 3);
         assertEquals("Bulbasaur", createdBulbasaur.getName());
         assertEquals(0, createdBulbasaur.getIndex());
-        assertTrue(createdBulbasaur.getAttack() >= 49 && createdBulbasaur.getAttack() <= 64); // Basé sur l'ajustement avec IV
+        assertTrue(createdBulbasaur.getAttack() >= 49 && createdBulbasaur.getAttack() <= 64);
         assertTrue(createdBulbasaur.getDefense() >= 49 && createdBulbasaur.getDefense() <= 64);
         assertTrue(createdBulbasaur.getStamina() >= 45 && createdBulbasaur.getStamina() <= 60);
         assertEquals(613, createdBulbasaur.getCp());
         assertEquals(64, createdBulbasaur.getHp());
         assertEquals(4000, createdBulbasaur.getDust());
         assertEquals(3, createdBulbasaur.getCandy());
-        assertTrue(createdBulbasaur.getIv() >= 0 && createdBulbasaur.getIv() <= 100); // Vérification de l'IV entre 0 et 100
+        assertTrue(createdBulbasaur.getIv() >= 0 && createdBulbasaur.getIv() <= 100);
 
-        // Vérification pour Aquali
         Pokemon createdAquali = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
         assertEquals("Aquali", createdAquali.getName());
         assertEquals(133, createdAquali.getIndex());
@@ -48,7 +46,6 @@ public class IPokemonFactoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreatePokemonWithInvalidIndex() {
-        // Utilisation d'un index qui lève une PokedexException (ex. un index invalide)
         pokemonFactory.createPokemon(999, 500, 50, 3000, 2);
     }
 }

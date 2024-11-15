@@ -99,10 +99,7 @@ public class IPokedexTest {
         pokedex.addPokemon(aquali);
         pokedex.addPokemon(bulbasaur);
 
-        // Comparateur personnalisé pour trier les Pokémon par leur CP de manière décroissante
         List<Pokemon> sortedPokemons = pokedex.getPokemons(Comparator.comparingInt(Pokemon::getCp).reversed());
-
-        // Vérifiez que la liste est triée par CP décroissant
         assertEquals(Arrays.asList(aquali, bulbasaur), sortedPokemons);
     }
 
@@ -111,10 +108,7 @@ public class IPokedexTest {
         pokedex.addPokemon(aquali);
         pokedex.addPokemon(bulbasaur);
 
-        // Appel sans comparateur pour vérifier l'ordre d'insertion
         List<Pokemon> defaultOrderPokemons = pokedex.getPokemons(null);
-
-        // Vérifie que la liste suit l'ordre d'insertion (aquali ajouté avant bulbasaur)
         assertEquals(Arrays.asList(aquali, bulbasaur), defaultOrderPokemons);
     }
 

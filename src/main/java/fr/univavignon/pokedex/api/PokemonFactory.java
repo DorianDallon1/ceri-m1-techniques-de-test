@@ -7,14 +7,12 @@ public class PokemonFactory implements IPokemonFactory {
         try {
             PokemonMetadata metadata = metadataProvider.getPokemonMetadata(index);
 
-            // Générer des valeurs aléatoires pour attack, defense et stamina entre 0 et 15
             int individualAttack = generateIndividualValue();
             int individualDefense = generateIndividualValue();
             int individualStamina = generateIndividualValue();
 
-            // Calcul de l'IV en utilisant la formule correcte
             int totalIV = individualAttack + individualDefense + individualStamina;
-            double maxIV = 3 * 15; // Maximum possible est 15 * 3 (attack, defense, stamina)
+            double maxIV = 3 * 15;
             double iv = (totalIV / maxIV) * 100;
 
             return new Pokemon(
@@ -35,6 +33,6 @@ public class PokemonFactory implements IPokemonFactory {
     }
 
     private int generateIndividualValue() {
-        return (int) (Math.random() * 16); // Génère un niveau individuel entre 0 et 15
+        return (int) (Math.random() * 16);
     }
 }

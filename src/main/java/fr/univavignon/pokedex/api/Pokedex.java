@@ -38,7 +38,6 @@ public class Pokedex implements IPokedex {
     public List<Pokemon> getPokemons() {
         return Collections.unmodifiableList(pokemons);
     }
-
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
         List<Pokemon> sortedPokemons = new ArrayList<>(pokemons);
