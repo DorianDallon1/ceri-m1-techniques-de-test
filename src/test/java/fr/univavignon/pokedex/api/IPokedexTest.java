@@ -7,6 +7,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -31,7 +32,14 @@ public class IPokedexTest {
         assertEquals(0, pokedex.addPokemon(bulbasaur));
         assertEquals(1, pokedex.addPokemon(aquali));
     }
-
+    @Test
+    public void testSize() {
+        assertEquals(0, pokedex.size());
+        pokedex.addPokemon(bulbasaur);
+        assertEquals(1, pokedex.size());
+        pokedex.addPokemon(aquali);
+        assertEquals(2, pokedex.size());
+    }
     @Test
     public void testGetPokemon() throws PokedexException {
         pokedex.addPokemon(bulbasaur);
@@ -40,12 +48,15 @@ public class IPokedexTest {
         assertEquals(aquali, pokedex.getPokemon(1));
     }
 
-    @Test
-    public void testGetPokemonThrowsException() throws PokedexException {
-        PokedexException exception = assertThrows(PokedexException.class, () -> {
-            pokedex.getPokemon(999);
-        });
-        assertEquals("Invalid Pokemon ID: 999", exception.getMessage());
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonThrowsExceptionForInvalidId() throws PokedexException {
+        pokedex.getPokemon(-1);
+    }
+
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonThrowsExceptionForOutOfBoundsId() throws PokedexException {
+        pokedex.addPokemon(bulbasaur);
+        pokedex.getPokemon(1); // Index hors limites
     }
 
     @Test
@@ -58,5 +69,36 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertEquals("Bulbasaur", pokemons.get(0).getName());
         assertEquals("Aquali", pokemons.get(1).getName());
+    }
+
+    @Test
+    public void testCreatePokemon() {
+        Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 3);
+        assertNotNull(createdPokemon);
+        assertEquals("Bulbasaur", createdPokemon.getName());
+        assertEquals(0, createdPokemon.getIndex());
+        assertTrue(createdPokemon.getAttack() >= 49 && createdPokemon.getAttack() <= 64);
+        assertTrue(createdPokemon.getDefense() >= 49 && createdPokemon.getDefense() <= 64);
+        assertTrue(createdPokemon.getStamina() >= 45 && createdPokemon.getStamina() <= 60);
+    }
+
+    @Test
+    public void testGetPokemonMetadata() {
+        try {
+            PokemonMetadata metadata = pokedex.getPokemonMetadata(0);
+            assertNotNull(metadata);
+            assertEquals(0, metadata.getIndex());
+            assertEquals("Bulbasaur", metadata.getName());
+            assertEquals(49, metadata.getAttack());
+            assertEquals(49, metadata.getDefense());
+            assertEquals(45, metadata.getStamina());
+        } catch (PokedexException e) {
+            fail("Aucune exception ne doit être lancée pour un index valide.");
+        }
+    }
+
+    @Test(expected = PokedexException.class)
+    public void testGetPokemonMetadataInvalidIndex() throws PokedexException {
+        pokedex.getPokemonMetadata(999);
     }
 }
