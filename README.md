@@ -24,6 +24,7 @@ La documentation Javadoc est disponible ici :
 J'ai ajouté le code de la team rocket à la place de mon ancien code PokemonFactory, dans ce code aquali n'est pas ajouté à la liste des pokémon dans index2map.
 J'ai donc du le supprimer du test original pour qu'il passe le test. Ensuite le 2e test initial était en cas d'index invalide mais le cas n'étais pas gérer par la team rocket.
 J'ai donc modifier la ligne correspondant pour que le test passe.
+J'ai aussi du ajouter un test en cas d'index négatif.
 
 
 ## Introduction
