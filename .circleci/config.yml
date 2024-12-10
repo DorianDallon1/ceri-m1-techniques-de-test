@@ -22,18 +22,18 @@ jobs:
       - store_artifacts:
           path: target/site/apidocs
           destination: javadoc
-#      - run:
-#          name: Déployer la Javadoc sur GitHub Pages
-#          command: |
-#            git config --global user.email "dorian084270@gmail.com"
-#            git config --global user.name "Dorian Dallon"
-#            git clone --branch gh-pages https://github.com/DorianDallon1/ceri-m1-techniques-de-test.git gh-pages
-#            rm -rf gh-pages/*
-#            cp -R target/site/apidocs/* gh-pages/
-#            cd gh-pages
-#            git add .
-#            git commit -m "Mise à jour de la Javadoc"
-#            git push origin gh-pages
+      - run:
+          name: Déployer la Javadoc sur GitHub Pages
+          command: |
+            git config --global user.email "ci@circleci.com"
+            git config --global user.name "CircleCI"
+            git clone --branch gh-pages https://github.com/DorianDallon1/ceri-m1-techniques-de-test.git gh-pages
+            rm -rf gh-pages/*
+            cp -R target/site/apidocs/* gh-pages/
+            cd gh-pages
+            git add .
+            git commit -m "Mise à jour de la Javadoc"
+            git push https://$GHToken@github.com/DorianDallon1/ceri-m1-techniques-de-test.git gh-pages
 workflows:
   version: 2
   test:
