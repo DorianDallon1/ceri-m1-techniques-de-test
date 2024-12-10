@@ -33,4 +33,26 @@ public class IPokemonFactoryTest {
     public void testCreatePokemonWithInvalidIndex() {
         pokemonFactory.createPokemon(999, 500, 50, 3000, 2);
     }
+
+    @Test
+    public void testCreatePokemonWithNegativeIndex() {
+        // Test pour un Pokémon avec un index négatif (-1 correspond à Ash's Pikachu)
+        Pokemon ashPikachu = pokemonFactory.createPokemon(-1, 500, 60, 4000, 3);
+
+        // Vérifiez que le nom est correct
+        assertEquals("Ash's Pikachu", ashPikachu.getName());
+
+        // Vérifiez les statistiques spécifiques pour les indices négatifs
+        assertEquals(1000, ashPikachu.getAttack());
+        assertEquals(1000, ashPikachu.getDefense());
+        assertEquals(1000, ashPikachu.getStamina());
+        assertEquals(0, ashPikachu.getIv(), 0); // Vérifiez que l'IV est 0
+
+        // Vérifiez les autres valeurs passées en paramètres
+        assertEquals(-1, ashPikachu.getIndex());
+        assertEquals(500, ashPikachu.getCp());
+        assertEquals(60, ashPikachu.getHp());
+        assertEquals(4000, ashPikachu.getDust());
+        assertEquals(3, ashPikachu.getCandy());
+    }
 }
