@@ -70,10 +70,10 @@ public class IPokedexTest {
 
     @Test
     public void testCreatePokemon() {
-        Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 3);
+        Pokemon createdPokemon = pokedex.createPokemon(1, 613, 64, 4000, 3);
         assertNotNull(createdPokemon);
         assertEquals("Bulbasaur", createdPokemon.getName());
-        assertEquals(0, createdPokemon.getIndex());
+        assertEquals(1, createdPokemon.getIndex());
         assertTrue(createdPokemon.getAttack() >= 49 && createdPokemon.getAttack() <= 64);
         assertTrue(createdPokemon.getDefense() >= 49 && createdPokemon.getDefense() <= 64);
         assertTrue(createdPokemon.getStamina() >= 45 && createdPokemon.getStamina() <= 60);
