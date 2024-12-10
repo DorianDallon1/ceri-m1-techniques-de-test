@@ -68,7 +68,6 @@
                 </executions>
                 <configuration>
                     <configLocation>config/checkstyle.xml</configLocation>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                 </configuration>
@@ -90,7 +89,6 @@
                 <configuration>
                     <destDir>${project.build.directory}/javadoc</destDir>
                     <failOnError>false</failOnError>
-                    <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
 
