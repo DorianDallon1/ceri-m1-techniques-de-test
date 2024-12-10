@@ -27,7 +27,7 @@ jobs:
           command: |
             git config --global user.email "ci@circleci.com"
             git config --global user.name "CircleCI"
-            git clone --branch gh-pages https://github.com/DorianDallon1/ceri-m1-techniques-de-test.git gh-pages
+            git clone --branch gh-pages https://$GHToken@github.com/DorianDallon1/ceri-m1-techniques-de-test.git gh-pages
             rm -rf gh-pages/*
             cp -R target/site/apidocs/* gh-pages/
             cd gh-pages
