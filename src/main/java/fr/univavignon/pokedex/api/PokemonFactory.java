@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.api;
 
+import fr.univavignon.pokedex.imp.RocketPokemonFactory;
 import org.apache.commons.collections4.map.UnmodifiableMap;
 
 import java.util.HashMap;
@@ -50,11 +51,10 @@ public class PokemonFactory implements IPokemonFactory {
         aMap.put(-1, "Ash's Pikachu");
         aMap.put(0, "MISSINGNO");
         aMap.put(1, "Bulbasaur");
-        //TODO : Gotta map them all !
         index2name = UnmodifiableMap.unmodifiableMap(aMap);
     }
 
-    static int generateRandomStat() {
+    private static int generateRandomStat() {
         int total = 0;
         for(int i=0; i < 1000000; i++)
         {
@@ -69,7 +69,7 @@ public class PokemonFactory implements IPokemonFactory {
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         String name;
         if(!index2name.containsKey(index)) {
-            name = index2name.get(0);
+            throw new IllegalArgumentException("Invalid Pokemon index: " + index);
         } else {
             name = index2name.get(index);
         }

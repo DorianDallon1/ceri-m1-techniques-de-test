@@ -19,6 +19,13 @@ M1 Alternant ILSEN
 La documentation Javadoc est disponible ici :  
 [Voir la Javadoc](https://doriandallon1.github.io/ceri-m1-techniques-de-test)
 
+## TP 6 rapport
+
+J'ai ajouté le code de la team rocket à la place de mon ancien code PokemonFactory, dans ce code aquali n'est pas ajouté à la liste des pokémon dans index2map.
+J'ai donc du le supprimer du test original pour qu'il passe le test. Ensuite le 2e test initial était en cas d'index invalide mais le cas n'étais pas gérer par la team rocket.
+J'ai donc modifier la ligne correspondant pour que le test passe.
+
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
