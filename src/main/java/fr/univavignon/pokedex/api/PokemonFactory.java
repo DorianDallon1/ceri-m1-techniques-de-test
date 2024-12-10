@@ -1,12 +1,14 @@
 package fr.univavignon.pokedex.api;
 
-import fr.univavignon.pokedex.imp.RocketPokemonFactory;
-import org.apache.commons.collections4.map.UnmodifiableMap;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.commons.collections4.map.UnmodifiableMap;
+
+/**
+ * Classe implémentant une usine de création de Pokémon.
+ */
 public class PokemonFactory implements IPokemonFactory {
     /* Ancien code
     @Override
@@ -45,7 +47,11 @@ public class PokemonFactory implements IPokemonFactory {
     }
     */
 
+    /**
+     * Map associant les indices des Pokémon à leurs noms.
+     */
     private static Map<Integer, String> index2name;
+
     static {
         Map<Integer, String> aMap = new HashMap<Integer, String>();
         aMap.put(-1, "Ash's Pikachu");
@@ -54,10 +60,14 @@ public class PokemonFactory implements IPokemonFactory {
         index2name = UnmodifiableMap.unmodifiableMap(aMap);
     }
 
+    /**
+     * Génère une statistique aléatoire pour un Pokémon.
+     *
+     * @return Une valeur aléatoire entre 0 et 15.
+     */
     private static int generateRandomStat() {
         int total = 0;
-        for(int i=0; i < 1000000; i++)
-        {
+        for (int i = 0; i < 1000000; i++) {
             Random rn = new Random();
             int r = rn.nextInt(2);
             total = total + r;
@@ -65,10 +75,21 @@ public class PokemonFactory implements IPokemonFactory {
         return total / 10000;
     }
 
+    /**
+     * Crée une instance de Pokémon en fonction des paramètres fournis.
+     *
+     * @param index L'indice du Pokémon dans le Pokédex.
+     * @param cp Les points de combat (Combat Power) du Pokémon.
+     * @param hp Les points de vie (Health Points) du Pokémon.
+     * @param dust La quantité de poussière d'étoiles nécessaire pour améliorer ce Pokémon.
+     * @param candy La quantité de bonbons nécessaire pour améliorer ce Pokémon.
+     * @return Une instance de {@link Pokemon}.
+     * @throws IllegalArgumentException Si l'indice du Pokémon est invalide.
+     */
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         String name;
-        if(!index2name.containsKey(index)) {
+        if (!index2name.containsKey(index)) {
             throw new IllegalArgumentException("Invalid Pokemon index: " + index);
         } else {
             name = index2name.get(index);
@@ -77,7 +98,7 @@ public class PokemonFactory implements IPokemonFactory {
         int defense;
         int stamina;
         double iv;
-        if(index < 0) {
+        if (index < 0) {
             attack = 1000;
             defense = 1000;
             stamina = 1000;
