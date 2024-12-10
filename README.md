@@ -11,6 +11,14 @@ M1 Alternant ILSEN
 ![CircleCI](https://circleci.com/gh/DorianDallon1/ceri-m1-techniques-de-test.svg?style=svg)  
 [![codecov](https://codecov.io/github/DorianDallon1/ceri-m1-techniques-de-test/graph/badge.svg?token=C49PKWXVLO)](https://codecov.io/github/DorianDallon1/ceri-m1-techniques-de-test)
 
+![Checkstyle](https://img.shields.io/badge/code--style-checkstyle-brightgreen)
+[![Javadoc](https://img.shields.io/badge/Javadoc-100%25-brightgreen)](https://doriandallon1.github.io/ceri-m1-techniques-de-test)
+
+## Documentation
+
+La documentation Javadoc est disponible ici :  
+[Voir la Javadoc](https://doriandallon1.github.io/ceri-m1-techniques-de-test)
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  

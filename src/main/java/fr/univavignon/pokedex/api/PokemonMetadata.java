@@ -1,35 +1,47 @@
 package fr.univavignon.pokedex.api;
 
 /**
- * Pokemon metadata POJO.
- * 
+ * Represents the metadata of a Pokemon.
+ * The metadata includes the Pokemon's index, name, and base statistics such as
+ * attack, defense, and stamina levels.
+ * This class is immutable and provides a standardized way to access the core
+ * attributes of a Pokemon.
+ *
+ * <p>
+ * Example usage:
+ * <pre>
+ *     PokemonMetadata metadata = new PokemonMetadata(1, "Bulbasaur", 49, 49, 45);
+ *     int attack = metadata.getAttack();
+ * </pre>
+ * </p>
+ *
  * @author fv
  */
 public class PokemonMetadata {
 
-	/** Pokemon index. **/
+	/** Index of the Pokemon in the Pokedex. */
 	private final int index;
 
-	/** Pokemon name. **/
+	/** Name of the Pokemon. */
 	private final String name;
 
-	/** Pokemon attack level. **/
+	/** Base attack level of the Pokemon. */
 	private final int attack;
 
-	/** Pokemon defense level. **/
+	/** Base defense level of the Pokemon. */
 	private final int defense;
 
-	/** Pokemon stamina level. **/
+	/** Base stamina level of the Pokemon. */
 	private final int stamina;
 
 	/**
-	 * Default constructor.
-	 * 
-	 * @param index Pokemon index.
-	 * @param name Pokemon name.
-	 * @param attack Attack level.
-	 * @param defense Defense level.
-	 * @param stamina Stamina level.
+	 * Constructs a new {@link PokemonMetadata} instance.
+	 *
+	 * @param index   The index of the Pokemon in the Pokedex.
+	 * @param name    The name of the Pokemon.
+	 * @param attack  The base attack level of the Pokemon.
+	 * @param defense The base defense level of the Pokemon.
+	 * @param stamina The base stamina level of the Pokemon.
 	 */
 	public PokemonMetadata(final int index, final String name, final int attack, final int defense, final int stamina) {
 		this.index = index;
@@ -38,28 +50,48 @@ public class PokemonMetadata {
 		this.defense = defense;
 		this.stamina = stamina;
 	}
-	
-	/** Index getter. **/
+
+	/**
+	 * Returns the index of the Pokemon in the Pokedex.
+	 *
+	 * @return The Pokemon index.
+	 */
 	public int getIndex() {
 		return index;
 	}
-	
-	/** Name getter.**/
+
+	/**
+	 * Returns the name of the Pokemon.
+	 *
+	 * @return The Pokemon name.
+	 */
 	public String getName() {
 		return name;
 	}
 
-	/** Attack level getter. **/
+	/**
+	 * Returns the base attack level of the Pokemon.
+	 *
+	 * @return The Pokemon attack level.
+	 */
 	public int getAttack() {
 		return attack;
 	}
 
-	/** Defense level getter. **/
+	/**
+	 * Returns the base defense level of the Pokemon.
+	 *
+	 * @return The Pokemon defense level.
+	 */
 	public int getDefense() {
 		return defense;
 	}
 
-	/** Stamina level getter. **/
+	/**
+	 * Returns the base stamina level of the Pokemon.
+	 *
+	 * @return The Pokemon stamina level.
+	 */
 	public int getStamina() {
 		return stamina;
 	}
